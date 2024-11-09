@@ -3258,6 +3258,43 @@ class MusicBot(discord.Client):
                 expire_in=30,
             )
 
+    async def cmd_p(
+            self,
+            message: discord.Message,
+            _player: Optional[MusicPlayer],
+            channel: GuildMessageableChannels,
+            guild: discord.Guild,
+            author: discord.Member,
+            permissions: PermissionGroup,
+            leftover_args: List[str],
+            song_url: str,
+    ) -> CommandResponse:
+        """
+        Usage:
+            {command_prefix}p song_link
+            {command_prefix}p text to search for
+            {command_prefix}p spotify_uri
+
+        Adds the song to be played back immediately.  If a link is not provided, the first
+        result from a youtube search is added to the queue.
+
+        If enabled in the config, the bot will also support Spotify URLs, however
+        it will use the metadata (e.g song name and artist) to find a YouTube
+        equivalent of the song. Streaming from Spotify is not possible.
+
+        Alias for play
+        """
+        return await self.cmd_play(
+            message,
+            _player,
+            channel,
+            guild,
+            author,
+            permissions,
+            leftover_args,
+            song_url
+        )
+
     async def cmd_play(
         self,
         message: discord.Message,
@@ -3274,6 +3311,78 @@ class MusicBot(discord.Client):
             {command_prefix}play song_link
             {command_prefix}play text to search for
             {command_prefix}play spotify_uri
+
+        Adds the song to be played back immediately.  If a link is not provided, the first
+        result from a youtube search is added to the queue.
+
+        If enabled in the config, the bot will also support Spotify URLs, however
+        it will use the metadata (e.g song name and artist) to find a YouTube
+        equivalent of the song. Streaming from Spotify is not possible.
+
+        Alias for playnow
+        """
+        return await self.cmd_playnow(
+            message,
+            _player,
+            channel,
+            guild,
+            author,
+            permissions,
+            leftover_args,
+            song_url
+        )
+
+    async def cmd_e(
+            self,
+            message: discord.Message,
+            _player: Optional[MusicPlayer],
+            channel: GuildMessageableChannels,
+            guild: discord.Guild,
+            author: discord.Member,
+            permissions: PermissionGroup,
+            leftover_args: List[str],
+            song_url: str,
+    ) -> CommandResponse:
+        """
+        Usage:
+            {command_prefix}enqueue song_link
+            {command_prefix}enqueue text to search for
+            {command_prefix}enqueue spotify_uri
+
+        Adds the song to the playlist.  If a link is not provided, the first
+        result from a youtube search is added to the queue.
+
+        If enabled in the config, the bot will also support Spotify URLs, however
+        it will use the metadata (e.g song name and artist) to find a YouTube
+        equivalent of the song. Streaming from Spotify is not possible.
+        """
+        return await self.cmd_enqueue(
+            message,
+            _player,
+            channel,
+            guild,
+            author,
+            permissions,
+            leftover_args,
+            song_url
+        )
+
+    async def cmd_enqueue(
+        self,
+        message: discord.Message,
+        _player: Optional[MusicPlayer],
+        channel: GuildMessageableChannels,
+        guild: discord.Guild,
+        author: discord.Member,
+        permissions: PermissionGroup,
+        leftover_args: List[str],
+        song_url: str,
+    ) -> CommandResponse:
+        """
+        Usage:
+            {command_prefix}enqueue song_link
+            {command_prefix}enqueue text to search for
+            {command_prefix}enqueue spotify_uri
 
         Adds the song to the playlist.  If a link is not provided, the first
         result from a youtube search is added to the queue.
@@ -3386,9 +3495,9 @@ class MusicBot(discord.Client):
     ) -> CommandResponse:
         """
         Usage:
-            {command_prefix}play song_link
-            {command_prefix}play text to search for
-            {command_prefix}play spotify_uri
+            {command_prefix}playnow song_link
+            {command_prefix}playnow text to search for
+            {command_prefix}playnow spotify_uri
 
         Adds the song to be played back immediately.  If a link is not provided, the first
         result from a youtube search is added to the queue.
