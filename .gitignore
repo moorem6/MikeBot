@@ -2,6 +2,7 @@
 *.pyc
 ~*/
 .vscode/
+mise.toml
 
 audio_cache/
 dectalk/
