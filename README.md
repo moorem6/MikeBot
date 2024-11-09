@@ -1,3 +1,11 @@
+# MikeBot
+
+This is just a fork of [MusicBot](https://github.com/Just-Some-Bots/MusicBot) with some minor customizations.
+
+If any improvements are added here that would apply to the larger project I'll submit a pull request.
+
+Bot is for personal educational use only.
+
 # MusicBot
 
 [![GitHub stars](https://img.shields.io/github/stars/Just-Some-Bots/MusicBot.svg)](https://github.com/Just-Some-Bots/MusicBot/stargazers)
