@@ -4839,6 +4839,19 @@ class MusicBot(discord.Client):
             delete_after=30,
         )
 
+    async def cmd_stop(self, player: MusicPlayer) -> CommandResponse:
+        """
+        Usage:
+            {command_prefix}stop
+
+        Stops playback of the current song.
+
+        Alias for pause
+        """
+        return await self.cmd_pause(
+            player
+        )
+
     async def cmd_pause(self, player: MusicPlayer) -> CommandResponse:
         """
         Usage:
