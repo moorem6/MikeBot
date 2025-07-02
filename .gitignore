@@ -3,6 +3,7 @@
 ~*/
 .vscode/
 mise.toml
+*.service
 
 audio_cache/
 dectalk/
